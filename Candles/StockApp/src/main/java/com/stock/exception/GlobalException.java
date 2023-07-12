@@ -9,24 +9,23 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 @RestControllerAdvice
-public class GlobalException  {
+public class GlobalException {
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ErrorDetails> MycommonexcHandler(Exception ie,WebRequest req){
-		ErrorDetails me= new ErrorDetails();
+	public ResponseEntity<ErrorDetails> MycommonexcHandler(Exception ie, WebRequest req) {
+		ErrorDetails me = new ErrorDetails();
 		me.setTimestamp(LocalDateTime.now());
 		me.setDetails(req.getDescription(false));
 		me.setMessage(ie.getMessage());
-		return new ResponseEntity<>(me,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(me, HttpStatus.BAD_REQUEST);
 	}
-	
-	
+
 	@ExceptionHandler(CandleException.class)
-	public ResponseEntity<ErrorDetails> MycommonexcHandler(CandleException ie,WebRequest req){
-		ErrorDetails me= new ErrorDetails();
+	public ResponseEntity<ErrorDetails> MycommonexcHandler(CandleException ie, WebRequest req) {
+		ErrorDetails me = new ErrorDetails();
 		me.setTimestamp(LocalDateTime.now());
 		me.setDetails(req.getDescription(false));
 		me.setMessage(ie.getMessage());
-		return new ResponseEntity<>(me,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(me, HttpStatus.BAD_REQUEST);
 	}
 }
