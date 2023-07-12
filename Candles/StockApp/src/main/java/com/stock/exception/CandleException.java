@@ -1,6 +1,6 @@
 package com.stock.exception;
 
-public class CandleException extends RuntimeException{
+public class CandleException extends RuntimeException {
 
 	public CandleException() {
 		super();
