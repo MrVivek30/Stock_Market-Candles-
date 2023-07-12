@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.exception.CandleException;
 import com.stock.model.Candle;
+import com.stock.model.CandleDTO;
 import com.stock.service.CandleService;
 
 @RestController
@@ -83,9 +84,9 @@ public class CandleController {
      * @return ResponseEntity with the list of combined candles or error message
      */
     @GetMapping("/combined-candles")
-    public ResponseEntity<List<Candle>> getCombinedCandles(@RequestParam int interval) {
+    public ResponseEntity<List<CandleDTO>> getCombinedCandles(@RequestParam int interval) {
         try {
-            List<Candle> combinedCandles = candleService.getCombinedCandles(interval);
+            List<CandleDTO> combinedCandles = candleService.getCombinedCandles(interval);
             return new ResponseEntity<>(combinedCandles, HttpStatus.OK);
         } catch (CandleException e) {
             logger.error("Error occurred while getting combined candles.", e);
